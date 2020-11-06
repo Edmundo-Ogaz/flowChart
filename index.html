@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jointjs/2.1.0/joint.css" />
+</head>
+<body>
+    <!-- content -->
+    <div id="myholder"></div>
+
+    <!-- dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/3.10.1/lodash.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jointjs/2.1.0/joint.js"></script>
+
+    <!-- code -->
+    <script type="text/javascript">
+
+        var graph = new joint.dia.Graph;
+
+        var paper = new joint.dia.Paper({
+            el: document.getElementById('myholder'),
+            model: graph,
+            width: 1200,
+            height: 900,
+            gridSize: 1
+        });
+
+        var rect = new joint.shapes.standard.Rectangle();
+        rect.position(100, 30);
+        rect.resize(100, 40);
+        rect.attr({
+            body: {
+                fill: 'blue'
+            },
+            label: {
+                text: 'Leucemia',
+                fill: 'white'
+            }
+        });
+        rect.addTo(graph);
+
+        var rect2 = new joint.shapes.standard.Rectangle();
+        rect2.position(100, 30);
+        rect2.resize(100, 40);
+        rect2.attr({
+            body: {
+                fill: 'blue'
+            },
+            label: {
+                text: 'Leucemia',
+                fill: 'white'
+            }
+        });
+        rect2.addTo(graph);
+
+        var rect3 = new joint.shapes.standard.Rectangle();
+        rect3.position(100, 30);
+        rect3.resize(100, 40);
+        rect3.attr({
+            body: {
+                fill: 'blue'
+            },
+            label: {
+                text: 'Leucemia',
+                fill: 'white'
+            }
+        });
+        rect3.addTo(graph);
+
+        var link = new joint.shapes.standard.Link();
+        link.source(rect);
+        link.target(rect2);
+        link.addTo(graph);
+
+        var link2 = new joint.shapes.standard.Link();
+        link2.source(rect2);
+        link2.target(rect3);
+        link2.addTo(graph);
+
+        paper.on('blank:pointerdblclick', function() {
+            alert('blank:pointerdblclick');
+        });
+
+        paper.on('element:pointerdblclick', function(elementView) {
+            alert('element:pointerdblclick');
+        });
+
+        paper.on('link:pointerdblclick', function(linkView) {
+            alert('link:pointerdblclick');
+        });
+
+        paper.on('cell:pointerdblclick', function(cellView) {
+            alert('cell:pointerdblclick');
+        });
+
+
+    </script>
+</body>
+</html>
