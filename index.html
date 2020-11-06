@@ -26,10 +26,10 @@
             gridSize: 1
         });
 
-        var rect = new joint.shapes.standard.Rectangle();
-        rect.position(100, 30);
-        rect.resize(100, 40);
-        rect.attr({
+        const LEUCEMIA = new joint.shapes.standard.Rectangle();
+        LEUCEMIA.position(100, 30);
+        LEUCEMIA.resize(100, 40);
+        LEUCEMIA.attr({
             body: {
                 fill: 'blue'
             },
@@ -38,45 +38,83 @@
                 fill: 'white'
             }
         });
-        rect.addTo(graph);
+        LEUCEMIA.addTo(graph);
 
-        var rect2 = new joint.shapes.standard.Rectangle();
-        rect2.position(100, 30);
-        rect2.resize(100, 40);
-        rect2.attr({
+        const IA = new joint.shapes.standard.Rectangle();
+        IA.position(100, 30);
+        IA.resize(100, 40);
+        IA.attr({
             body: {
                 fill: 'blue'
             },
             label: {
-                text: 'Leucemia',
+                text: 'IA',
                 fill: 'white'
             }
         });
-        rect2.addTo(graph);
+        IA.addTo(graph);
 
-        var rect3 = new joint.shapes.standard.Rectangle();
-        rect3.position(100, 30);
-        rect3.resize(100, 40);
-        rect3.attr({
+        const IB_RB = new joint.shapes.standard.Rectangle();
+        IB_RB.position(100, 30);
+        IB_RB.resize(100, 40);
+        IB_RB.attr({
             body: {
                 fill: 'blue'
             },
             label: {
-                text: 'Leucemia',
+                text: 'IB (RB)',
                 fill: 'white'
             }
         });
-        rect3.addTo(graph);
+        IB_RB.addTo(graph);
+
+        const IB_RM = new joint.shapes.standard.Rectangle();
+        IB_RM.position(100, 30);
+        IB_RM.resize(100, 40);
+        IB_RM.attr({
+            body: {
+                fill: 'blue'
+            },
+            label: {
+                text: 'IB (RM)',
+                fill: 'white'
+            }
+        });
+        IB_RM.addTo(graph);
+
+        const IB_RA = new joint.shapes.standard.Rectangle();
+        IB_RA.position(100, 30);
+        IB_RA.resize(100, 40);
+        IB_RA.attr({
+            body: {
+                fill: 'blue'
+            },
+            label: {
+                text: 'IB (RA)',
+                fill: 'white'
+            }
+        });
+        IB_RA.addTo(graph);
 
         var link = new joint.shapes.standard.Link();
-        link.source(rect);
-        link.target(rect2);
+        link.source(LEUCEMIA);
+        link.target(IA);
         link.addTo(graph);
 
         var link2 = new joint.shapes.standard.Link();
-        link2.source(rect2);
-        link2.target(rect3);
+        link2.source(IA);
+        link2.target(IB_RB);
         link2.addTo(graph);
+
+        var link3 = new joint.shapes.standard.Link();
+        link3.source(IA);
+        link3.target(IB_RM);
+        link3.addTo(graph);
+
+        var link4 = new joint.shapes.standard.Link();
+        link4.source(IA);
+        link4.target(IB_RA);
+        link4.addTo(graph);
 
         paper.on('blank:pointerdblclick', function() {
             alert('blank:pointerdblclick');
